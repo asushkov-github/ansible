@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("OnlinerTests")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a37845f241349dc96264b5b013943232087ff62c")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c8b5bf1e5123a0226c817959e8ad6cc4ee94b944")]
 [assembly: System.Reflection.AssemblyProductAttribute("OnlinerTests")]
 [assembly: System.Reflection.AssemblyTitleAttribute("OnlinerTests")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
