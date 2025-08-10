@@ -2,6 +2,7 @@ from typing import Generator
 import os
 import pytest
 from playwright.sync_api import Browser, BrowserContext, Page, Playwright, sync_playwright
+import allure
 
 BASE_URL = os.getenv("BASE_URL", "https://www.onliner.by/")
 HEADLESS = os.getenv("PLAYWRIGHT_HEADLESS", "1") not in ("0", "false", "False")
@@ -28,3 +29,9 @@ def page(context: BrowserContext) -> Generator[Page, None, None]:
     page = context.new_page()
     yield page
     page.close()
+
+# Label BDD scenarios in Allure
+def pytest_bdd_before_scenario(request, feature, scenario):
+    allure.dynamic.feature(feature.name)
+    allure.dynamic.story(scenario.name)
+    allure.dynamic.label("suite", "BDD")
