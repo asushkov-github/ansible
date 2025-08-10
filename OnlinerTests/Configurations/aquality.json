@@ -1,0 +1,22 @@
+{
+  "driverSettings": {
+    "browserName": "chrome",
+    "remoteConnectionUrl": "${SELENOID_URL}",
+    "capabilities": {
+      "browserName": "chrome",
+      "browserVersion": "${BROWSER_VERSION}",
+      "selenoid:options": {
+        "enableVNC": true,
+        "enableVideo": false
+      }
+    }
+  },
+  "timeouts": {
+    "script": 15000,
+    "implicit": 0,
+    "pageLoad": 60000
+  },
+  "logger": {"logLevel": "info"},
+  "projectName": "Onliner.by UI",
+  "environment": "dev"
+}
