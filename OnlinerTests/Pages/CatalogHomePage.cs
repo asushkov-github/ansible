@@ -1,14 +1,16 @@
-using Aquality.Selenium.Elements.Interfaces;
-using Aquality.Selenium.Forms;
 using OpenQA.Selenium;
 
 namespace OnlinerTests.Pages;
 
-public class CatalogHomePage : Form
+public class CatalogHomePage
 {
-    private readonly ILabel Navigation = ElementFactory.GetLabel(By.CssSelector(".catalog-navigation, nav"), "Catalog navigation");
+    private readonly IWebDriver _driver;
+    public CatalogHomePage(IWebDriver driver) { _driver = driver; }
 
-    public CatalogHomePage() : base(By.CssSelector("body"), "Catalog Home") { }
+    private By Navigation => By.CssSelector(".catalog-navigation, nav");
 
-    public bool IsLoaded() => Navigation.State.IsDisplayed;
+    public bool IsLoaded()
+    {
+        try { return _driver.FindElement(Navigation).Displayed; } catch { return false; }
+    }
 }

@@ -13,7 +13,7 @@ public class HomeTests : BaseTest
     [AllureStory("Home page loads")]
     public void HomePageLoads()
     {
-        var home = new HomePage();
+        var home = new HomePage(Driver);
         home.Open();
         Assert.That(home.IsLoaded(), Is.True);
     }
@@ -23,10 +23,10 @@ public class HomeTests : BaseTest
     [AllureStory("Navigate to catalog from home")]
     public void NavigateToCatalog()
     {
-        var home = new HomePage();
+        var home = new HomePage(Driver);
         home.Open();
         home.GoToCatalog();
-        var catalog = new CatalogHomePage();
+        var catalog = new CatalogHomePage(Driver);
         Assert.That(catalog.IsLoaded(), Is.True);
     }
 }
