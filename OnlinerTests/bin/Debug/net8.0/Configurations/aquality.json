@@ -1,0 +1,27 @@
+{
+  "driverSettings": {
+    "browserName": "chrome",
+    "isRemote": true,
+    "remoteConnectionUrl": "https://${BROWSERSTACK_USERNAME}:${BROWSERSTACK_ACCESS_KEY}@hub-cloud.browserstack.com/wd/hub",
+    "capabilities": {
+      "browserName": "chrome",
+      "browserVersion": "${BROWSERSTACK_BROWSER_VERSION:=latest}",
+      "bstack:options": {
+        "os": "${BROWSERSTACK_OS:=Windows}",
+        "osVersion": "${BROWSERSTACK_OS_VERSION:=11}",
+        "sessionName": "${BROWSERSTACK_SESSION_NAME:=Onliner UI Tests}",
+        "buildName": "${BROWSERSTACK_BUILD_NAME:=Onliner UI Build}",
+        "seleniumVersion": "${BROWSERSTACK_SELENIUM_VERSION:=4.25.0}",
+        "local": false
+      }
+    }
+  },
+  "timeouts": {
+    "script": 15000,
+    "implicit": 0,
+    "pageLoad": 60000
+  },
+  "logger": {"logLevel": "info"},
+  "projectName": "Onliner.by UI",
+  "environment": "browserstack"
+}
