@@ -1,0 +1,213 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Newton's Laws for Kids — Dynamic SVG</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600;700&family=Nunito:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <h1>Newton's Laws for Kids</h1>
+      <p class="tagline">Play with science! Push, pull, and zoom to learn how things move.</p>
+      <nav class="tabs" aria-label="Select a law">
+        <button class="tab is-active" data-target="law1" aria-controls="law1" aria-selected="true">1) Inertia</button>
+        <button class="tab" data-target="law2" aria-controls="law2" aria-selected="false">2) F = m × a</button>
+        <button class="tab" data-target="law3" aria-controls="law3" aria-selected="false">3) Action ↔ Reaction</button>
+      </nav>
+    </header>
+
+    <main>
+      <!-- Law 1: Inertia -->
+      <section id="law1" class="panel is-visible" tabindex="0" aria-labelledby="tab-law1">
+        <div class="panel-intro">
+          <h2>Law 1: Inertia</h2>
+          <p>Things like to keep doing what they're doing! A still ball stays still. A moving ball keeps moving (unless something slows it down).</p>
+        </div>
+        <div class="canvas-wrap">
+          <svg id="svg-law1" viewBox="0 0 800 320" role="img" aria-label="Ball on ground with a friendly hand ready to push">
+            <defs>
+              <linearGradient id="sky" x1="0%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" stop-color="#c6ecff"/>
+                <stop offset="100%" stop-color="#eefdff"/>
+              </linearGradient>
+              <linearGradient id="grass" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stop-color="#c8f7a6"/>
+                <stop offset="100%" stop-color="#a6ef7b"/>
+              </linearGradient>
+            </defs>
+
+            <rect x="0" y="0" width="800" height="220" fill="url(#sky)"/>
+            <rect x="0" y="220" width="800" height="100" fill="url(#grass)"/>
+
+            <!-- Track markers -->
+            <g fill="#bde0fe">
+              <rect x="100" y="210" width="4" height="10"/>
+              <rect x="300" y="210" width="4" height="10"/>
+              <rect x="500" y="210" width="4" height="10"/>
+              <rect x="700" y="210" width="4" height="10"/>
+            </g>
+
+            <!-- Ball -->
+            <g id="l1-ball" transform="translate(100,200)">
+              <circle r="24" fill="#ffcf5a" stroke="#e3a800" stroke-width="3"/>
+              <circle r="8" cx="-8" cy="-6" fill="#fff" opacity="0.5"/>
+              <text id="l1-speed-label" x="0" y="-36" text-anchor="middle" font-family="Nunito" font-size="14" fill="#333">speed: 0</text>
+            </g>
+
+            <!-- Friendly hand -->
+            <g id="l1-hand" transform="translate(60,170)">
+              <rect x="0" y="0" width="28" height="26" rx="6" fill="#ffd7ba" stroke="#f4a261"/>
+              <rect x="22" y="6" width="20" height="8" rx="4" fill="#ffd7ba" stroke="#f4a261"/>
+              <rect x="22" y="16" width="20" height="8" rx="4" fill="#ffd7ba" stroke="#f4a261"/>
+            </g>
+          </svg>
+
+          <div class="controls">
+            <button id="l1-push" class="btn">Give it a push!</button>
+            <button id="l1-reset" class="btn btn-secondary" title="Put the ball back">Reset</button>
+            <label class="control">
+              <span>Friction:</span>
+              <input id="l1-friction" type="range" min="0" max="1" value="0.2" step="0.05"/>
+              <div class="ticks">
+                <span>Space</span><span>Carpet</span>
+              </div>
+            </label>
+          </div>
+        </div>
+      </section>
+
+      <!-- Law 2: F = m × a -->
+      <section id="law2" class="panel" tabindex="0" aria-labelledby="tab-law2">
+        <div class="panel-intro">
+          <h2>Law 2: Force = mass × acceleration</h2>
+          <p>Push the same and the lighter cart zooms faster! Change the force or the masses to see what happens.</p>
+        </div>
+        <div class="canvas-wrap">
+          <svg id="svg-law2" viewBox="0 0 800 360" role="img" aria-label="Two carts racing on tracks">
+            <defs>
+              <linearGradient id="track" x1="0" y1="0" x2="100%" y2="0">
+                <stop offset="0%" stop-color="#d9d9d9"/>
+                <stop offset="100%" stop-color="#bdbdbd"/>
+              </linearGradient>
+            </defs>
+
+            <rect x="0" y="0" width="800" height="360" fill="#f7fbff"/>
+
+            <!-- Tracks -->
+            <g fill="url(#track)">
+              <rect x="40" y="130" width="720" height="8" rx="4"/>
+              <rect x="40" y="260" width="720" height="8" rx="4"/>
+            </g>
+
+            <!-- Carts -->
+            <g id="l2-cart1" transform="translate(60,110)">
+              <rect x="-30" y="0" width="60" height="36" rx="6" fill="#90e0ef" stroke="#0077b6"/>
+              <circle cx="-18" cy="38" r="8" fill="#023e8a"/>
+              <circle cx="18" cy="38" r="8" fill="#023e8a"/>
+              <text id="l2-a1" x="0" y="-10" text-anchor="middle" font-family="Nunito" font-size="14" fill="#333">a: 0</text>
+            </g>
+
+            <g id="l2-cart2" transform="translate(60,240)">
+              <rect x="-30" y="0" width="60" height="36" rx="6" fill="#ffd6a5" stroke="#f77f00"/>
+              <circle cx="-18" cy="38" r="8" fill="#d55a00"/>
+              <circle cx="18" cy="38" r="8" fill="#d55a00"/>
+              <text id="l2-a2" x="0" y="-10" text-anchor="middle" font-family="Nunito" font-size="14" fill="#333">a: 0</text>
+            </g>
+
+            <!-- Force arrows (dynamic length) -->
+            <g stroke-width="4" stroke-linecap="round">
+              <line id="l2-f1" x1="60" y1="120" x2="110" y2="120" stroke="#0077b6"/>
+              <polygon id="l2-f1-head" points="110,120 98,114 98,126" fill="#0077b6"/>
+              <line id="l2-f2" x1="60" y1="250" x2="110" y2="250" stroke="#f77f00"/>
+              <polygon id="l2-f2-head" points="110,250 98,244 98,256" fill="#f77f00"/>
+            </g>
+          </svg>
+
+          <div class="controls">
+            <label class="control">
+              <span>Force (same for both):</span>
+              <input id="l2-force" type="range" min="20" max="200" value="100" step="5"/>
+            </label>
+            <label class="control">
+              <span>Mass cart A:</span>
+              <input id="l2-m1" type="range" min="1" max="10" value="3" step="1"/>
+            </label>
+            <label class="control">
+              <span>Mass cart B:</span>
+              <input id="l2-m2" type="range" min="1" max="10" value="7" step="1"/>
+            </label>
+            <button id="l2-start" class="btn">Start</button>
+            <button id="l2-reset" class="btn btn-secondary">Reset</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Law 3: Action-Reaction -->
+      <section id="law3" class="panel" tabindex="0" aria-labelledby="tab-law3">
+        <div class="panel-intro">
+          <h2>Law 3: Action and Reaction</h2>
+          <p>When two friends push each other, they fly apart! The pushes are equal and opposite. Change their masses to see who moves more.</p>
+        </div>
+        <div class="canvas-wrap">
+          <svg id="svg-law3" viewBox="0 0 800 320" role="img" aria-label="Two kids on skateboards pushing off">
+            <rect x="0" y="0" width="800" height="320" fill="#fff7f0"/>
+            <rect x="40" y="210" width="720" height="8" rx="4" fill="#c0c0c0"/>
+
+            <!-- Left skater -->
+            <g id="l3-left" transform="translate(260,200)">
+              <rect x="-30" y="0" width="60" height="18" rx="4" fill="#8ecae6" stroke="#006d77"/>
+              <circle cx="-18" cy="20" r="6" fill="#023047"/>
+              <circle cx="18" cy="20" r="6" fill="#023047"/>
+              <circle cx="0" cy="-18" r="12" fill="#ffb703" stroke="#fb8500"/>
+              <text id="l3-vL" x="0" y="-36" text-anchor="middle" font-family="Nunito" font-size="14" fill="#333">v: 0</text>
+            </g>
+
+            <!-- Right skater -->
+            <g id="l3-right" transform="translate(540,200)">
+              <rect x="-30" y="0" width="60" height="18" rx="4" fill="#bde0fe" stroke="#577590"/>
+              <circle cx="-18" cy="20" r="6" fill="#495057"/>
+              <circle cx="18" cy="20" r="6" fill="#495057"/>
+              <circle cx="0" cy="-18" r="12" fill="#9b5de5" stroke="#6930c3"/>
+              <text id="l3-vR" x="0" y="-36" text-anchor="middle" font-family="Nunito" font-size="14" fill="#333">v: 0</text>
+            </g>
+
+            <!-- Action-Reaction arrows -->
+            <g id="l3-arrows" stroke-width="4" stroke-linecap="round">
+              <line id="l3-arrowL" x1="300" y1="160" x2="240" y2="160" stroke="#006d77"/>
+              <polygon id="l3-headL" points="240,160 252,154 252,166" fill="#006d77"/>
+              <line id="l3-arrowR" x1="500" y1="160" x2="560" y2="160" stroke="#577590"/>
+              <polygon id="l3-headR" points="560,160 548,154 548,166" fill="#577590"/>
+            </g>
+          </svg>
+
+          <div class="controls">
+            <label class="control">
+              <span>Left mass:</span>
+              <input id="l3-mL" type="range" min="2" max="12" step="1" value="6"/>
+            </label>
+            <label class="control">
+              <span>Right mass:</span>
+              <input id="l3-mR" type="range" min="2" max="12" step="1" value="4"/>
+            </label>
+            <label class="control">
+              <span>Push strength (equal & opposite):</span>
+              <input id="l3-force" type="range" min="30" max="200" step="5" value="120"/>
+            </label>
+            <button id="l3-push" class="btn">Push off!</button>
+            <button id="l3-reset" class="btn btn-secondary">Reset</button>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>Made with ❤️ for curious kids. Tip: Try different settings and watch what changes!</p>
+    </footer>
+
+    <script type="module" src="./main.js"></script>
+  </body>
+</html>
